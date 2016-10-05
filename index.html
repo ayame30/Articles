@@ -1,0 +1,149 @@
+<html><head>
+<style>
+body, html {
+  padding: 0;
+  margin: 0;
+  background: #000;
+}
+.section-head {
+  width: 100%;
+  padding-bottom: 70%;
+  overflow: hidden;
+  position: relative;
+}
+.background-section{
+  opacity: 0;
+  position: absolute;
+  transition: all 3s 0.4s;
+  background:  #ccc;
+  width: 100%;
+  height: 100%;
+}
+.section-head.active .background-section {
+  opacity: 1;
+}
+.section-head h1 {
+  color: #fff;
+  position: absolute;
+  opacity: 0;
+  transition: all 1s 2s;
+}
+.section-head .left-header {
+  top: 20%;
+  right: calc(50% + 50px);
+}
+.section-head .right-header {
+  top: 20%;
+  left: calc(70% + 20px);
+}
+.cross{
+  position: absolute;
+  height: 10px;
+  background: #fff;
+  transition: all 5s;
+}
+.cross-left {
+  width: 0;
+  bottom: 0;
+  top: 100%;
+  left: 10%;
+  transform: rotate(-45deg);
+  transform-origin: left;
+}
+.cross-right {
+  width: 0;
+  bottom: 20%;
+  top: 80%;
+  right: 0;
+  transform: rotate(-315deg);
+  transform-origin: right;
+}
+.section-head.active .cross-left, .section-head.active .cross-right{
+  width: 200%;
+}
+.section-head.active h1 {
+  opacity: 1;
+}
+a.left-clickable-section {
+  position: absolute;
+  height: 100%;
+  bottom: -30%;
+  left: -25.5%;
+  width: 150%;
+  cursor: pointer;
+  transform: rotate(-45deg);
+  transform-origin: left;
+}
+a.right-clickable-section {
+  position: absolute;
+  height: 100%;
+  bottom: -86%;
+  left: 34.5%;
+  width: 150%;
+  cursor: pointer;
+  transform: rotate(-45deg);
+  transform-origin: left;
+}
+.right-colorfill-section {
+  position: absolute;
+  height: 65.5%;
+  top: 30%;
+  left: 0;
+  width: 100%;
+  background: #000;
+  opacity: 0.5;
+  cursor: pointer;
+  transition: all 3s;
+  transform: translateX(80%) rotate(45deg);
+  transform-origin: top;
+}
+.right-colorfill-section.active {
+  height: 180%;
+}
+.left-colorfill-section {
+  position: absolute;
+  height: 107.8%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  opacity: 0.5;
+  cursor: pointer;
+  transition: all 3s;
+  transform: translateX(-76.5%) rotate(-45deg);
+  transform-origin: top;
+}
+.left-colorfill-section.active {
+  height: 200%;
+}
+</style>
+</head><body>
+<div class="section-head">
+  <div class="background-section">
+    <div class="left-colorfill-section"></div>
+    <div class="right-colorfill-section"></div>
+  </div>
+  <h1 class="left-header">GRACE 21</h1>
+  <h1 class="right-header">GRACE 26</h1>
+  <div class="cross cross-left"></div>
+  <div class="cross cross-right"></div>
+  <a class="left-clickable-section"></a>
+  <a class="right-clickable-section"></a>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $(".section-head").addClass("active");
+  $(".left-clickable-section").on("click", function(){
+    $(".left-colorfill-section").addClass("active");
+    $(".right-colorfill-section").removeClass("active");
+  });
+  $(".right-clickable-section").on("click", function(){
+    $(".left-colorfill-section").removeClass("active");
+    $(".right-colorfill-section").addClass("active");
+  });
+});
+</script>
+
+
+</body></html>
